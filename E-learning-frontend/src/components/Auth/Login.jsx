@@ -1,6 +1,14 @@
 import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Login() {
+  const { loginWithRedirect } = useAuth0();
+
+  const handleGoogleLogin = () => {
+    // Trigger the Auth0 login with the Google connection
+    loginWithRedirect({ connection: 'google-oauth2' });
+  };
+
   return (
     <div className='flex w-3/5 mx-auto bg-white shadow-2xl rounded-lg overflow-hidden'>
       <div className='w-1/2'>
@@ -36,7 +44,11 @@ function Login() {
         <div className='text-center mb-4'>
           <span className='text-gray-600'>or</span>
         </div>
-        <button className="flex items-center w-full p-2 border rounded-lg shadow-md bg-white hover:bg-gray-200 transition duration-200">
+        <button 
+          type="button" 
+          onClick={handleGoogleLogin} 
+          className="flex items-center w-full p-2 border rounded-lg shadow-md bg-white hover:bg-gray-200 transition duration-200"
+        >
           <img
             src="https://th.bing.com/th/id/R.0dd54f853a1bffb0e9979f8146268af3?rik=qTQlRtQRV5AliQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fgoogle-logo-png-google-logo-icon-png-transparent-background-1000.png&ehk=VlcCHZ7jyV%2fCI7dZfbUl8Qb9%2f7uibkF6I6MBoqTtpRU%3d&risl=&pid=ImgRaw&r=0"
             alt="Google Login"
