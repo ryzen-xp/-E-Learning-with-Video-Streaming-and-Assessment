@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const Profile = () => {
   const [student, setStudent] = useState(null);
-  
+
   // Sample data representing courses with progress; replace this with actual data.
   const courses = [
     { id: 1, title: 'React for Beginners', progress: 75 },
@@ -22,34 +22,34 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex flex-col items-center w-full min-h-screen bg-gradient-to-b from-teal-500 to-teal-900 p-6">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
-        <h1 className="text-3xl font-bold text-teal-900 text-center mb-4">My Profile</h1>
+    <div className="flex flex-col items-center w-full min-h-screen bg-gradient-to-b from-teal-500 to-teal-900 p-8">
+      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
+        <h1 className="text-4xl font-bold text-teal-900 text-center mb-6">My Profile</h1>
         
         {/* Profile Image */}
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center mb-6">
           <img
             src={student.picture} // User's profile image
             alt="Profile"
-            className="w-32 h-32 rounded-full border-4 border-teal-900"
+            className="w-32 h-32 rounded-full border-4 border-teal-900 shadow-lg"
           />
         </div>
         
         {/* Student Information */}
         <div className="mb-6">
-          <h2 className="text-2xl font-semibold">Personal Information</h2>
-          <p><strong>Name:</strong> {student.name}</p>
-          <p><strong>Email:</strong> {student.email}</p>
-          <p><strong>Nickname:</strong> {student.nickname}</p>
+          <h2 className="text-2xl font-semibold text-teal-800 mb-2">Personal Information</h2>
+          <p className="text-lg"><strong>Name:</strong> {student.name}</p>
+          <p className="text-lg"><strong>Email:</strong> {student.email}</p>
+          <p className="text-lg"><strong>Nickname:</strong> {student.nickname}</p>
         </div>
         
         {/* Courses with Progress */}
         <div className="mb-6">
-          <h2 className="text-2xl font-semibold">Courses Enrolled</h2>
+          <h2 className="text-2xl font-semibold text-teal-800 mb-2">Courses Enrolled</h2>
           <ul className="list-disc pl-5">
             {courses.map(course => (
-              <li key={course.id} className="flex justify-between items-center mb-2">
-                <span>{course.title}</span>
+              <li key={course.id} className="flex justify-between items-center mb-4">
+                <span className="text-lg">{course.title}</span>
                 <div className="relative w-32">
                   <div className="bg-gray-300 h-2 rounded">
                     <div
