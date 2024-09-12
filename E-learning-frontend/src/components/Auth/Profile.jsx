@@ -22,8 +22,8 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex flex-col items-center w-full min-h-screen bg-gradient-to-b from-teal-500 to-teal-900 p-8">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
+    <div className="flex flex-col items-center justify-center w-full h-screen bg-gradient-to-b from-teal-500 to-teal-900 p-8">
+      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl">
         <h1 className="text-4xl font-bold text-teal-900 text-center mb-6">My Profile</h1>
         
         {/* Profile Image */}
@@ -38,9 +38,11 @@ const Profile = () => {
         {/* Student Information */}
         <div className="mb-6">
           <h2 className="text-2xl font-semibold text-teal-800 mb-2">Personal Information</h2>
-          <p className="text-lg"><strong>Name:</strong> {student.name}</p>
-          <p className="text-lg"><strong>Email:</strong> {student.email}</p>
-          <p className="text-lg"><strong>Nickname:</strong> {student.nickname}</p>
+          <div className="bg-gray-100 p-4 rounded-md shadow">
+            <p className="text-lg"><strong>Name:</strong> {student.name}</p>
+            <p className="text-lg"><strong>Email:</strong> {student.email}</p>
+            <p className="text-lg"><strong>Nickname:</strong> {student.nickname}</p>
+          </div>
         </div>
         
         {/* Courses with Progress */}
@@ -68,7 +70,7 @@ const Profile = () => {
 
         {/* Logout Button */}
         <div className="flex justify-center">
-          <button className="bg-teal-900 text-white font-semibold rounded-md px-4 py-2 hover:bg-teal-700 transition duration-200">
+          <button className="bg-teal-900 text-white font-semibold rounded-md px-6 py-3 hover:bg-teal-700 transition duration-200 shadow-md">
             Logout
           </button>
         </div>
