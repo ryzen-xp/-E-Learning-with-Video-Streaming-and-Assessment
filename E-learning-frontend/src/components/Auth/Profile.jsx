@@ -57,7 +57,7 @@ const Profile = () => {
                       style={{ width: `${course.progress}%` }}
                     />
                   </div>
-                  <span className="absolute top-0 left-1/2 transform -translate-x-1/2 text-xs font-medium text-teal-900">
+                  <span className="absolute top-1 left-1/2 transform -translate-x-1/2 text-xs font-medium text-teal-900">
                     {course.progress}%
                   </span>
                 </div>
