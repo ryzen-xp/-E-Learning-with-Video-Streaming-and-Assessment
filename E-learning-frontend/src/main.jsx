@@ -7,7 +7,7 @@ import './index.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Auth0Provider domain="dev-qbbjcdcz3vqlbjmj.us.auth0.com"
-    clientId="Uk58Ru9Tg3C1JeGOOY9ivigksopmEMBk"
+    clientId="PqSf2yMD1ivBhmaEplBaMjjjBXBbXC0d"
     authorizationParams={{
       redirect_uri: window.location.origin
     }}>
