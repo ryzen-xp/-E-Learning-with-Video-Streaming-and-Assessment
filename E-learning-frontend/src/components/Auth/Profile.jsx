@@ -22,7 +22,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-screen bg-gradient-to-b from-teal-500 to-teal-900">
+    <div className="flex flex-col items-center justify-center w-full h-screen bg-gradient-to-b ">
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl mx-4 md:mx-0">
         <h1 className="text-4xl font-bold text-teal-900 text-center mb-8">My Profile</h1>
         
