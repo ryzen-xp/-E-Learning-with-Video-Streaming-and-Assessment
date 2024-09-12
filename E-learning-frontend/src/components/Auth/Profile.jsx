@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 const Profile = () => {
   const [student, setStudent] = useState(null);
+  
+  // Sample data representing courses with progress; replace this with actual data.
+  const courses = [
+    { id: 1, title: 'React for Beginners', progress: 75 },
+    { id: 2, title: 'Advanced JavaScript', progress: 50 },
+    { id: 3, title: 'Data Structures and Algorithms', progress: 30 },
+  ];
 
   useEffect(() => {
     const userData = localStorage.getItem('user');
@@ -36,14 +43,26 @@ const Profile = () => {
           <p><strong>Nickname:</strong> {student.nickname}</p>
         </div>
         
-        {/* Additional Information */}
+        {/* Courses with Progress */}
         <div className="mb-6">
           <h2 className="text-2xl font-semibold">Courses Enrolled</h2>
-          {/* Sample courses; replace with actual course data */}
           <ul className="list-disc pl-5">
-            <li>React for Beginners</li>
-            <li>Advanced JavaScript</li>
-            <li>Data Structures and Algorithms</li>
+            {courses.map(course => (
+              <li key={course.id} className="flex justify-between items-center mb-2">
+                <span>{course.title}</span>
+                <div className="relative w-32">
+                  <div className="bg-gray-300 h-2 rounded">
+                    <div
+                      className="bg-teal-900 h-2 rounded"
+                      style={{ width: `${course.progress}%` }}
+                    />
+                  </div>
+                  <span className="absolute top-0 left-1/2 transform -translate-x-1/2 text-xs font-medium text-teal-900">
+                    {course.progress}%
+                  </span>
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
 
