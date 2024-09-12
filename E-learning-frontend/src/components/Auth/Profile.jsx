@@ -18,13 +18,13 @@ const Profile = () => {
   }, []);
 
   if (!student) {
-    return <div>Loading...</div>;
+    return <div className="flex items-center justify-center w-full h-screen bg-teal-500 text-white"><p>Loading...</p></div>;
   }
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-screen bg-gradient-to-b ">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl mx-4 md:mx-0">
-        <h1 className="text-4xl font-bold text-teal-900 text-center mb-8">My Profile</h1>
+    <div className="flex flex-col items-center justify-center w-full h-screen bg-gradient-to-b from-teal-500 to-teal-900 p-4">
+      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold text-teal-900 text-center mb-6">My Profile</h1>
         
         {/* Profile Image */}
         <div className="flex justify-center mb-8">
@@ -38,10 +38,10 @@ const Profile = () => {
         {/* Student Information */}
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-teal-800 mb-4">Personal Information</h2>
-          <div className="bg-gray-100 p-4 rounded-md shadow-md">
-            <p className="text-lg mb-2"><strong>Name:</strong> {student.name}</p>
-            <p className="text-lg mb-2"><strong>Email:</strong> {student.email}</p>
-            <p className="text-lg"><strong>Nickname:</strong> {student.nickname}</p>
+          <div className="bg-gray-100 p-6 rounded-md shadow-md">
+            <p className="text-lg mb-2"><strong>Name:</strong> <span className="text-teal-600">{student.name}</span></p>
+            <p className="text-lg mb-2"><strong>Email:</strong> <span className="text-teal-600">{student.email}</span></p>
+            <p className="text-lg"><strong>Nickname:</strong> <span className="text-teal-600">{student.nickname}</span></p>
           </div>
         </div>
         
