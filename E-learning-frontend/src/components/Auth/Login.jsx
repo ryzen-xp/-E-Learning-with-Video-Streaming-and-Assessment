@@ -12,7 +12,9 @@ function Login() {
   // Check if user is authenticated and log user data
   React.useEffect(() => {
     if (isAuthenticated && user) {
-      console.log('User data:', user); // You can handle user data as needed
+      console.log('User data:', user);
+      localStorage.setItem('user',JSON.stringify(user));
+       // You can handle user data as needed
     }
   }, [isAuthenticated, user]);
 
