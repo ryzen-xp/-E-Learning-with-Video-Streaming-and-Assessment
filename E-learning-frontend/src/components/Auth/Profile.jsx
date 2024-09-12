@@ -48,7 +48,7 @@ const Profile = () => {
             <p className="text-md"><strong>Nickname:</strong> <span className="text-teal-600">{student.nickname}</span></p>
           </div>
         </div>
-        
+    
         {/* Courses with Progress */}
         <div className="mb-8">
           <h2 className="text-xl font-semibold text-teal-800 mb-4">Courses Enrolled</h2>
