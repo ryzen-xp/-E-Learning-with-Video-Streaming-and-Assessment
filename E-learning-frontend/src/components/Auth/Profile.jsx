@@ -18,16 +18,20 @@ const Profile = () => {
   }, []);
 
   if (!student) {
-    return <div className="flex items-center justify-center w-full h-screen bg-teal-500 text-white"><p>Loading...</p></div>;
+    return (
+      <div className="flex items-center justify-center w-full h-full bg-teal-500 text-white">
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-screen bg-gradient-to-b from-teal-500 to-teal-900 p-4">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold text-teal-900 text-center mb-6">My Profile</h1>
+    <div className="flex flex-col items-center justify-center w-full h-full bg-gradient-to-b from-teal-500 to-teal-900 p-4">
+      <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-3xl mx-auto">
+        <h1 className="text-3xl font-extrabold text-teal-900 text-center mb-6">My Profile</h1>
         
         {/* Profile Image */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-6">
           <img
             src={student.picture} // User's profile image
             alt="Profile"
@@ -37,21 +41,21 @@ const Profile = () => {
         
         {/* Student Information */}
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-teal-800 mb-4">Personal Information</h2>
-          <div className="bg-gray-100 p-6 rounded-md shadow-md">
-            <p className="text-lg mb-2"><strong>Name:</strong> <span className="text-teal-600">{student.name}</span></p>
-            <p className="text-lg mb-2"><strong>Email:</strong> <span className="text-teal-600">{student.email}</span></p>
-            <p className="text-lg"><strong>Nickname:</strong> <span className="text-teal-600">{student.nickname}</span></p>
+          <h2 className="text-xl font-semibold text-teal-800 mb-4">Personal Information</h2>
+          <div className="bg-gray-100 p-4 rounded-md shadow-md">
+            <p className="text-md mb-2"><strong>Name:</strong> <span className="text-teal-600">{student.name}</span></p>
+            <p className="text-md mb-2"><strong>Email:</strong> <span className="text-teal-600">{student.email}</span></p>
+            <p className="text-md"><strong>Nickname:</strong> <span className="text-teal-600">{student.nickname}</span></p>
           </div>
         </div>
         
         {/* Courses with Progress */}
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-teal-800 mb-4">Courses Enrolled</h2>
+          <h2 className="text-xl font-semibold text-teal-800 mb-4">Courses Enrolled</h2>
           <ul className="list-disc pl-5">
             {courses.map(course => (
-              <li key={course.id} className="flex justify-between items-center mb-6">
-                <span className="text-lg">{course.title}</span>
+              <li key={course.id} className="flex justify-between items-center mb-4">
+                <span className="text-md">{course.title}</span>
                 <div className="relative w-32">
                   <div className="bg-gray-300 h-2 rounded">
                     <div
