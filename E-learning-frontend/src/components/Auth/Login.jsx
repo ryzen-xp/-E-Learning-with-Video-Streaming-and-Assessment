@@ -2,12 +2,19 @@ import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function Login() {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, user, isAuthenticated } = useAuth0();
 
   const handleGoogleLogin = () => {
     // Trigger the Auth0 login with the Google connection
     loginWithRedirect({ connection: 'google-oauth2' });
   };
+
+  // Check if user is authenticated and log user data
+  React.useEffect(() => {
+    if (isAuthenticated && user) {
+      console.log('User data:', user); // You can handle user data as needed
+    }
+  }, [isAuthenticated, user]);
 
   return (
     <div className='flex w-3/5 mx-auto bg-white shadow-2xl rounded-lg overflow-hidden'>
