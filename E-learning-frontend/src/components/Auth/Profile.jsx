@@ -24,10 +24,10 @@ const Profile = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen bg-gradient-to-b from-teal-500 to-teal-900 p-8">
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl">
-        <h1 className="text-4xl font-bold text-teal-900 text-center mb-6">My Profile</h1>
+        <h1 className="text-4xl font-bold text-teal-900 text-center mb-8">My Profile</h1>
         
         {/* Profile Image */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-8">
           <img
             src={student.picture} // User's profile image
             alt="Profile"
@@ -36,26 +36,26 @@ const Profile = () => {
         </div>
         
         {/* Student Information */}
-        <div className="mb-6">
-          <h2 className="text-2xl font-semibold text-teal-800 mb-2">Personal Information</h2>
-          <div className="bg-gray-100 p-4 rounded-md shadow">
-            <p className="text-lg"><strong>Name:</strong> {student.name}</p>
-            <p className="text-lg"><strong>Email:</strong> {student.email}</p>
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold text-teal-800 mb-4">Personal Information</h2>
+          <div className="bg-gray-100 p-4 rounded-md shadow-md">
+            <p className="text-lg mb-2"><strong>Name:</strong> {student.name}</p>
+            <p className="text-lg mb-2"><strong>Email:</strong> {student.email}</p>
             <p className="text-lg"><strong>Nickname:</strong> {student.nickname}</p>
           </div>
         </div>
         
         {/* Courses with Progress */}
-        <div className="mb-6">
-          <h2 className="text-2xl font-semibold text-teal-800 mb-2">Courses Enrolled</h2>
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold text-teal-800 mb-4">Courses Enrolled</h2>
           <ul className="list-disc pl-5">
             {courses.map(course => (
-              <li key={course.id} className="flex justify-between items-center mb-4">
+              <li key={course.id} className="flex justify-between items-center mb-6">
                 <span className="text-lg">{course.title}</span>
                 <div className="relative w-32">
                   <div className="bg-gray-300 h-2 rounded">
                     <div
-                      className="bg-teal-900 h-2 rounded"
+                      className={`h-2 rounded ${course.progress >= 70 ? 'bg-green-600' : course.progress >= 50 ? 'bg-yellow-500' : 'bg-red-500'}`}
                       style={{ width: `${course.progress}%` }}
                     />
                   </div>
@@ -70,7 +70,7 @@ const Profile = () => {
 
         {/* Logout Button */}
         <div className="flex justify-center">
-          <button className="bg-teal-900 text-white font-semibold rounded-md px-6 py-3 hover:bg-teal-700 transition duration-200 shadow-md">
+          <button className="bg-teal-900 text-white font-semibold rounded-md px-6 py-3 hover:bg-teal-700 transition duration-200 shadow-lg">
             Logout
           </button>
         </div>
