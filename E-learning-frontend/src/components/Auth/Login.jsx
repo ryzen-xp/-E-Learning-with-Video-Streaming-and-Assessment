@@ -31,7 +31,7 @@ function Login() {
           alt="E-Learning Banner"
         />
       </div>
-      <form className='flex flex-col w-full md:w-1/2 p-8 bg-white overflow-y-auto' style={{ maxHeight: '90vh' }}>
+      <form className='flex flex-col w-full md:w-1/2 p-8 bg-white overflow-hidden' style={{ maxHeight: '90vh' }}>
         <h1 className='text-center text-3xl font-bold mb-6 text-teal-950'>Login</h1>
 
         {/* Email Field */}
