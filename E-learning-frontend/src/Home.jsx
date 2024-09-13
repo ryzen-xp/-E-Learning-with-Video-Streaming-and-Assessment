@@ -1,6 +1,7 @@
 // src/components/Auth/Signup.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Signup from './components/Auth/Signup';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const Home = () => {
         >
           Go to Home
         </button>
+        
       </div>
     </div>
   );
