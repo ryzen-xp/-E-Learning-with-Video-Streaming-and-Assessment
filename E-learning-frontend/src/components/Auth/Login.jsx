@@ -27,7 +27,7 @@ function Login() {
           alt="E-Learning Banner"
         />
       </div>
-      <form className='flex flex-col w-full md:w-1/2 p-8 bg-white'>
+      <form className='flex flex-col w-full md:w-1/2 p-8 bg-white overflow-y-auto' style={{ maxHeight: '90vh' }}>
         <h1 className='text-center text-3xl font-bold mb-6 text-teal-950'>Login</h1>
         <div className='mb-4'>
           <label className='block font-medium text-gray-700'>Email</label>
