@@ -3,6 +3,11 @@ import React, { useState } from 'react';
 function Signup() {
   const [profileImage, setProfileImage] = useState(null);
   const [gender, setGender] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -15,11 +20,31 @@ function Signup() {
     setGender(e.target.value);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    // Simulate an API call
+    setTimeout(() => {
+      // Implement your registration logic here
+      if (email === 'test@example.com') {
+        setError('Email already exists');
+      } else {
+        // Registration successful
+        alert('Registration successful!');
+      }
+      setLoading(false);
+    }, 2000);
+  };
+
   return (
     <div className='flex flex-col items-center justify-center min-h-screen bg-gray-100 py-4'>
-      <div className='w-full max-w-lg p-6 bg-white rounded-lg shadow-md'>
+      <div className='w-full max-w-lg p-6 bg-white rounded-lg shadow-md overflow-hidden'>
         <h2 className='text-2xl font-bold text-center text-teal-950 mb-6'>Create an Account</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
+          {error && <div className='text-red-600 text-sm mb-4'>{error}</div>}
+
           <div className='mb-4'>
             <label className='block text-sm font-medium text-gray-700'>Profile Image</label>
             <input
@@ -48,6 +73,8 @@ function Signup() {
             <label className='block text-sm font-medium text-gray-700'>Email</label>
             <input
               type='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className='block w-full p-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600'
               placeholder='Enter your email'
               required
@@ -64,7 +91,6 @@ function Signup() {
             />
           </div>
 
-          {/* Address Field */}
           <div className='mb-4'>
             <label className='block text-sm font-medium text-gray-700'>Address</label>
             <input
@@ -75,7 +101,6 @@ function Signup() {
             />
           </div>
 
-          {/* Gender Section */}
           <div className='mb-4'>
             <label className='block text-sm font-medium text-gray-700'>Gender</label>
             <div className='flex items-center'>
@@ -118,12 +143,13 @@ function Signup() {
             </div>
           </div>
 
-          {/* Password Fields in Row */}
           <div className='flex mb-4'>
             <div className='w-1/2 pr-2'>
               <label className='block text-sm font-medium text-gray-700'>Password</label>
               <input
                 type='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className='block w-full p-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600'
                 placeholder='Create a password'
                 required
@@ -134,6 +160,8 @@ function Signup() {
               <label className='block text-sm font-medium text-gray-700'>Confirm Password</label>
               <input
                 type='password'
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 className='block w-full p-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600'
                 placeholder='Confirm your password'
                 required
@@ -143,9 +171,10 @@ function Signup() {
 
           <button
             type='submit'
-            className='w-full py-2 mt-4 bg-teal-950 text-white font-semibold rounded-md hover:bg-teal-700 transition duration-200'
+            disabled={loading}
+            className={`w-full py-2 mt-4 bg-teal-950 text-white font-semibold rounded-md hover:bg-teal-700 transition duration-200 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
-            Sign Up
+            {loading ? 'Signing Up...' : 'Sign Up'}
           </button>
         </form>
 

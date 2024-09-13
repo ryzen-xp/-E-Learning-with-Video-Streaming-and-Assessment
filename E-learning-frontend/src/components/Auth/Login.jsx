@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function Login() {
   const { loginWithRedirect, user, isAuthenticated } = useAuth0();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleGoogleLogin = () => {
-    // Trigger the Auth0 login with the Google connection
     loginWithRedirect({ connection: 'google-oauth2' });
   };
 
-  // Check if user is authenticated and log user data
   React.useEffect(() => {
     if (isAuthenticated && user) {
       console.log('User data:', user);
       localStorage.setItem('user', JSON.stringify(user));
-      // You can handle user data as needed
     }
   }, [isAuthenticated, user]);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <div className='flex flex-col md:flex-row w-full max-w-4xl mx-auto bg-white shadow-2xl rounded-lg overflow-hidden'>
@@ -29,6 +32,8 @@ function Login() {
       </div>
       <form className='flex flex-col w-full md:w-1/2 p-8 bg-white overflow-y-auto' style={{ maxHeight: '90vh' }}>
         <h1 className='text-center text-3xl font-bold mb-6 text-teal-950'>Login</h1>
+
+        {/* Email Field */}
         <div className='mb-4'>
           <label className='block font-medium text-gray-700'>Email</label>
           <input
@@ -38,23 +43,40 @@ function Login() {
             required
           />
         </div>
+
+        {/* Password Field */}
         <div className='mb-4'>
           <label className='block font-medium text-gray-700'>Password</label>
-          <input
-            type="password"
-            className='block w-full rounded-md border border-gray-300 py-2 px-3 mt-1 text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-600'
-            placeholder='Enter your password'
-            required
-          />
+          <div className='relative'>
+            <input
+              type={showPassword ? 'text' : 'password'}
+              className='block w-full rounded-md border border-gray-300 py-2 px-3 mt-1 text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-600 pr-10'
+              placeholder='Enter your password'
+              required
+            />
+            <button
+              type='button'
+              onClick={togglePasswordVisibility}
+              className='absolute inset-y-0 right-0 flex items-center px-3 text-gray-500'
+            >
+              {showPassword ? <FaEyeSlash className='w-5 h-5' /> : <FaEye className='w-5 h-5' />}
+            </button>
+          </div>
         </div>
+
+        {/* Login Button */}
         <div className='mb-6'>
           <button className='w-full h-12 bg-teal-950 rounded-md text-white font-semibold hover:bg-teal-700 transition duration-200'>
             Login
           </button>
         </div>
+
+        {/* OR Divider */}
         <div className='text-center mb-4'>
           <span className='text-gray-600'>or</span>
         </div>
+
+        {/* Google Login Button */}
         <button 
           type="button" 
           onClick={handleGoogleLogin} 
@@ -67,6 +89,8 @@ function Login() {
           />
           <span> Login with Google</span>
         </button>
+
+        {/* Signup Link */}
         <div className='text-center mt-4'>
           <p className='text-gray-600'>
             Don't have an account?{' '}
