@@ -19,7 +19,7 @@ function Login() {
   }, [isAuthenticated, user]);
 
   return (
-    <div className='flex flex-col md:flex-row w-full max-w-4xl mx-auto bg-white shadow-2xl rounded-lg overflow-hidden'>
+    <div className='flex flex-col md:flex-row w-full max-w-4xl mx-auto bg-white shadow-2xl rounded-lg scroll-smooth'>
       <div className='md:w-1/2'>
         <img
           className='object-cover w-full h-72 md:h-full'
