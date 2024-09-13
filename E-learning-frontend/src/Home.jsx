@@ -21,7 +21,7 @@ const Home = () => {
           onClick={handleSignup}
           className="bg-teal-600 text-white font-semibold rounded-md px-6 py-3 hover:bg-teal-500 transition duration-200 shadow-lg"
         >
-          Go to Home
+          Go to Login
         </button>
         
       </div>

@@ -1,21 +1,12 @@
-import React from 'react'
-import Login from './components/Auth/Login'
-import Signup from './components/Auth/Signup'
-import Profile from './components/Auth/Profile'
-import Routers from './ComponentsRouter'
-import Home from './Home'
-
-import ComponentsRouter from './ComponentsRouter'
+import React from 'react';
+import ComponentsRouter from './ComponentsRouter';
 
 function App() {
   return (
-    <div className='h-screen grid place-content-center'>
-  
-     <ComponentsRouter/>
-     
+    <div className='min-h-screen grid place-content-center bg-gray-100 p-4 sm:p-8 md:p-12 lg:p-16'>
+      <ComponentsRouter />
     </div>
-   
-  )
+  );
 }
 
-export default App
+export default App;
