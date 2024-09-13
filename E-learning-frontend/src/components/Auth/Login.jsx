@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const { loginWithRedirect, user, isAuthenticated } = useAuth0();
@@ -94,9 +95,9 @@ function Login() {
         <div className='text-center mt-4'>
           <p className='text-gray-600'>
             Don't have an account?{' '}
-            <a href='/signup' className='text-teal-600 hover:underline'>
+            <Link href='/signup' className='text-teal-600 hover:underline'>
               Sign up here 
-            </a>
+            </Link>
           </p>
         </div>
       </form>
