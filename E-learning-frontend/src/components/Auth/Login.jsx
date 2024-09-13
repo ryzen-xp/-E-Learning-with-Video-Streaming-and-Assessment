@@ -22,7 +22,7 @@ function Login() {
   };
 
   return (
-    <div className='flex flex-col md:flex-row w-full max-w-4xl mx-auto bg-white shadow-2xl rounded-lg scroll-smooth'>
+    <div className='flex flex-col md:flex-row w-full max-w-4xl mx-auto bg-white shadow-2xl rounded-lg overflow-hidden'>
       <div className='md:w-1/2'>
         <img
           className='object-cover w-full h-72 md:h-full'
@@ -95,7 +95,7 @@ function Login() {
           <p className='text-gray-600'>
             Don't have an account?{' '}
             <a href='/signup' className='text-teal-600 hover:underline'>
-              Sign up here
+              Sign up here 
             </a>
           </p>
         </div>

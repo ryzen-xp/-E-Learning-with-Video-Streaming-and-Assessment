@@ -7,7 +7,7 @@ const Profile = () => {
   const courses = [
     { id: 1, title: 'React for Beginners', progress: 75 },
     { id: 2, title: 'Advanced JavaScript', progress: 50 },
-    { id: 3, title: 'Data Structures and Algorithms', progress: 30 },
+    { id: 3, title: 'Data Structures and Algorithms', progress: 40 },
   ];
 
   useEffect(() => {
