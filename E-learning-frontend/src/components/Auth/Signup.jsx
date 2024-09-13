@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Signup() {
   const [profileImage, setProfileImage] = useState(null);
@@ -180,9 +181,9 @@ function Signup() {
 
         <p className='mt-4 text-center text-gray-600'>
           Already have an account?{' '}
-          <a href='/login' className='text-teal-600 hover:underline'>
+          <Link to='/login' className='text-teal-600 hover:underline'>
             Log in
-          </a>
+          </Link>
         </p>
       </div>
     </div>
