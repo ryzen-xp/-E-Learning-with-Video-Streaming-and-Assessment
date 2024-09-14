@@ -1,11 +1,18 @@
 import React from 'react';
+import Navbar from './Navbar';
+import { BrowserRouter } from 'react-router-dom';
 import ComponentsRouter from './ComponentsRouter';
 
 function App() {
   return (
-    <div className='min-h-screen grid place-content-center bg-gray-100 p-4 sm:p-8 md:p-12 lg:p-16'>
-      <ComponentsRouter />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-grow flex items-center justify-center container mx-auto p-4">
+          <ComponentsRouter />
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 
