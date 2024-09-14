@@ -6,6 +6,12 @@ const navigation = [
   { name: 'Services', href: '#', current: false },
   { name: 'Contact', href: '#', current: false },
 ];
+const profile = [{
+  name:'Your Profile', href:'#',current: false},
+  {name:'Settings', href:'#',current: false},
+  {name:'Sign out', href:'#',current: false}
+]
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +22,7 @@ export default function Navbar() {
   };
 
   const toggleMenu = () => {
+    
     setIsOpen(!isOpen);
   };
 
@@ -133,7 +140,7 @@ export default function Navbar() {
       {isOpen && (
         <div className="sm:hidden">
           <div className="space-y-1 px-2 pb-3 pt-2">
-            {navigation.map((item) => (
+            {[...navigation,...profile].map((item) => (
               <a
                 key={item.name}
                 href={item.href}
@@ -144,9 +151,7 @@ export default function Navbar() {
                 {item.name}
               </a>
             ))}
-            <a href='#'>Your Profile</a>
-            <a>Settings</a>
-            <a>Sign out</a>
+           
           </div>
         </div>
       )}
