@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './db.js';
+import userRoutes from './src/routers/User.js';
 
 
 
@@ -19,7 +20,12 @@ app.use(express.static('public'));
 
 app.get('/',(req,res)=>{
   res.send('hello world')
-})
+});
+
+app.get('/api',(req,res)=>{
+res.send("hi ");
+});
+app.post('/api/user',userRoutes)
 
 
 // Start server
