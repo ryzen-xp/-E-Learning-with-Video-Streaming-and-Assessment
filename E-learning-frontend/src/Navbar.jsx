@@ -1,16 +1,16 @@
 import { useState } from 'react';
 
 const navigation = [
-  { name: 'Home', href: '/', current: false },
-  { name: 'About', href: '#', current: false },
-  { name: 'Services', href: '/quizz', current: false },
-  { name: 'Contact', href: '#', current: false },
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '#' },
+  { name: 'Services', href: '/quizz' },
+  { name: 'Contact', href: '#' },
 ];
 
 const profile = [
-  { name: 'Your Profile', href: '#', current: false },
-  { name: 'Settings', href: '#', current: false },
-  { name: 'Sign out', href: '#', current: false },
+  { name: 'Your Profile', href: '#' },
+  { name: 'Settings', href: '#' },
+  { name: 'Sign out', href: '#' },
 ];
 
 export default function Navbar() {
@@ -21,6 +21,9 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const classNames = (...classes) => classes.filter(Boolean).join(' ');
+
+  // Get the current path
+  const currentPath = window.location.pathname;
 
   return (
     <nav className="bg-gray-800">
@@ -44,12 +47,13 @@ export default function Navbar() {
                   href={item.href}
                   className={classNames(
                     'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium',
-                    item.current ? 'bg-gray-900 text-white' : ''
+                    currentPath === item.href ? 'bg-gray-900 text-white' : ''
                   )}
                 >
                   {item.name}
                 </a>
               ))}
+
               {/* Profile Dropdown */}
               <div className="relative">
                 <button
@@ -133,7 +137,9 @@ export default function Navbar() {
                 href={item.href}
                 className={classNames(
                   'block rounded-md px-3 py-2 text-base font-medium',
-                  item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  currentPath === item.href
+                    ? 'bg-gray-900 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                 )}
               >
                 {item.name}
