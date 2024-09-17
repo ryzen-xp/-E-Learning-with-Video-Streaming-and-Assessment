@@ -1,16 +1,17 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'About', href: '/login' },
+  { name: 'About', href: '/about' },
   { name: 'Services', href: '/quizz' },
-  { name: 'Contact', href: '#' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 const profile = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Your Profile', href: '/profile' },
+  { name: 'Settings', href: '/settings' },
+  { name: 'Sign out', href: '/logout' },
 ];
 
 export default function Navbar() {
@@ -21,9 +22,6 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const classNames = (...classes) => classes.filter(Boolean).join(' ');
-
-  // Get the current path
-  const currentPath = window.location.pathname;
 
   return (
     <nav className="bg-gray-800">
@@ -42,18 +40,19 @@ export default function Navbar() {
           <div className="hidden sm:flex sm:items-center sm:justify-between w-full">
             <div className="flex space-x-4 ml-auto">
               {navigation.map((item) => (
-                <a
+                <NavLink
                   key={item.name}
-                  href={item.href}
-                  className={classNames(
-                    'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium',
-                    currentPath === item.href ? 'bg-gray-900 text-white' : ''
-                  )}
+                  to={item.href}
+                  className={({ isActive }) =>
+                    classNames(
+                      'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium',
+                      isActive ? 'bg-gray-900 text-white' : ''
+                    )
+                  }
                 >
                   {item.name}
-                </a>
+                </NavLink>
               ))}
-
               {/* Profile Dropdown */}
               <div className="relative">
                 <button
@@ -70,14 +69,19 @@ export default function Navbar() {
                   <div className="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                     <div className="py-1">
                       {profile.map((item) => (
-                        <a
+                        <NavLink
                           key={item.name}
-                          href={item.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          to={item.href}
+                          className={({ isActive }) =>
+                            classNames(
+                              'block px-4 py-2 text-sm',
+                              isActive ? 'bg-gray-900 text-white' : 'text-gray-700 hover:bg-gray-100'
+                            )
+                          }
                           onClick={toggleDropdown}
                         >
                           {item.name}
-                        </a>
+                        </NavLink>
                       ))}
                     </div>
                   </div>
@@ -132,18 +136,18 @@ export default function Navbar() {
         <div className="sm:hidden">
           <div className="space-y-1 px-2 pb-3 pt-2">
             {[...navigation, ...profile].map((item) => (
-              <a
+              <NavLink
                 key={item.name}
-                href={item.href}
-                className={classNames(
-                  'block rounded-md px-3 py-2 text-base font-medium',
-                  currentPath === item.href
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
-                )}
+                to={item.href}
+                className={({ isActive }) =>
+                  classNames(
+                    'block rounded-md px-3 py-2 text-base font-medium',
+                    isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  )
+                }
               >
                 {item.name}
-              </a>
+              </NavLink>
             ))}
           </div>
         </div>
