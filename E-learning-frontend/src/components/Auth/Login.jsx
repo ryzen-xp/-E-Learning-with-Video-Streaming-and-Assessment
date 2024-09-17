@@ -1,25 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from './AuthApi';
 function Login() {
   const { loginWithRedirect, user, isAuthenticated } = useAuth0();
+  const navigate  = useNavigate();
+  // State to store email and password
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleGoogleLogin = () => {
-    loginWithRedirect({ connection: 'google-oauth2' });
+  // Handle Google login
+  const handleGoogleLogin = async () => {
+    try {
+      await loginWithRedirect({ connection: 'google-oauth2' });
+    } catch (error) {
+      console.error('Error during Google login:', error);
+    }
   };
 
-  React.useEffect(() => {
+  // Store authenticated user in localStorage when using Google login
+  useEffect(() => {
     if (isAuthenticated && user) {
-      console.log('User data:', user);
+      console.log('Google User data:', user);
+      // Optionally store user data locally
       localStorage.setItem('user', JSON.stringify(user));
+      // Send user data to the backend if needed
+      try {
+        login({ email: user.email, password: 'google-authenticated' });
+      } catch (error) {
+        console.error('Error during Google user login:', error);
+      }
     }
   }, [isAuthenticated, user]);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  // Handle form submission for manual login
+  const handleSubmit = async (e) => {
+    e.preventDefault();  // Prevent form default submission
+    try {
+      // Call login function with email and password
+   const resp =   await login({ email, password });
+   alert(resp);
+  
+    } catch (error) {
+      console.error('Error during manual login:', error);
+    }finally{
+// setEmail('');
+// setPassword('');
+navigate('/');
+    }
   };
 
   return (
@@ -32,7 +66,11 @@ function Login() {
             alt="E-Learning Banner"
           />
         </div>
-        <form className="flex flex-col w-full md:w-1/2 p-8 bg-white overflow-hidden" style={{ maxHeight: '90vh' }}>
+        <form
+          className="flex flex-col w-full md:w-1/2 p-8 bg-white overflow-hidden"
+          style={{ maxHeight: '90vh' }}
+          onSubmit={handleSubmit} // Form submission handled here
+        >
           <h1 className="text-center text-3xl font-bold mb-6 text-teal-950">Login</h1>
 
           {/* Email Field */}
@@ -40,6 +78,8 @@ function Login() {
             <label className="block font-medium text-gray-700">Email</label>
             <input
               type="email"
+              value={email}  // Bind email state
+              onChange={(e) => setEmail(e.target.value)}  // Update state on input change
               className="block w-full rounded-md border border-gray-300 py-2 px-3 mt-1 text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-600"
               placeholder="Enter your email"
               required
@@ -52,6 +92,8 @@ function Login() {
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
+                value={password}  // Bind password state
+                onChange={(e) => setPassword(e.target.value)}  // Update state on input change
                 className="block w-full rounded-md border border-gray-300 py-2 px-3 mt-1 text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-600 pr-10"
                 placeholder="Enter your password"
                 required
@@ -68,7 +110,10 @@ function Login() {
 
           {/* Login Button */}
           <div className="mb-6">
-            <button className="w-full h-12 bg-teal-950 rounded-md text-white font-semibold hover:bg-teal-700 transition duration-200">
+            <button
+              type="submit"  // Ensure the form is submitted when button is clicked
+              className="w-full h-12 bg-teal-950 rounded-md text-white font-semibold hover:bg-teal-700 transition duration-200"
+            >
               Login
             </button>
           </div>
@@ -89,7 +134,7 @@ function Login() {
               alt="Google Login"
               className="w-8 h-8 mr-2"
             />
-            <span> Login with Google</span>
+            <span>Login with Google</span>
           </button>
 
           {/* Signup Link */}

@@ -12,6 +12,7 @@ function App() {
           <ComponentsRouter />
         </main>
       </div>
+    
     </BrowserRouter>
   );
 }
