@@ -49,7 +49,12 @@ function QuizzScreen() {
   return (
     <div className="flex flex-col min-w-full justify-between min-h-screen p-4 md:p-8 lg:p-12 bg-gradient-to-b ">
       {!quizFinished ? (
-        <>
+        <> 
+          <div className="text-center mb-6">
+      <h1 className="text-3xl font-bold">SQL Knowledge Assessment Quiz</h1>
+      <p className="text-lg mt-2">Test your knowledge with these multiple choice questions.</p>
+      <p className="text-md mt-2">Level: Intermediate to Advanced</p>
+    </div>
           <div className="bg-blue-600 h-18 w-full flex items-center justify-between rounded-t-lg px-4 py-4">
             <h2 className="text-lg md:text-2xl font-semibold text-white">
               Question {currentQuestionIndex + 1} of {mcqQuestions.length}
