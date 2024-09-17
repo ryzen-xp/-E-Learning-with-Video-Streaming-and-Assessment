@@ -3,7 +3,7 @@ import { useState } from 'react';
 const navigation = [
   { name: 'Home', href: '/', current: true },
   { name: 'About', href: '#', current: false },
-  { name: 'Services', href: '/', current: false },
+  { name: 'Services', href: '/quizz', current: false },
   { name: 'Contact', href: '#', current: false },
 ];
 const profile = [{
