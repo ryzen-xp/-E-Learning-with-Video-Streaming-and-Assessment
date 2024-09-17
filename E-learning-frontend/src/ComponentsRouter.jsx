@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Im
 import React from 'react';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
-import Home from './Home';
+import Home from './components/Home/Home';
 import QuizzScreen from './components/Quizz/QuizzScreen';
 
 function ComponentsRouter() {

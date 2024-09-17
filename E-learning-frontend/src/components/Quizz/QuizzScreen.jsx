@@ -45,77 +45,81 @@ function QuizzScreen() {
       setQuizFinished(true);
     }
   };
-
-  return (
-    <div className="flex flex-col min-w-full justify-between min-h-screen p-4 md:p-8 lg:p-12 bg-gradient-to-b ">
-      {!quizFinished ? (
-        <> 
-          <div className="text-center mb-6">
-      <h1 className="text-3xl font-bold">SQL Knowledge Assessment Quiz</h1>
-      <p className="text-lg mt-2">Test your knowledge with these multiple choice questions.</p>
-      <p className="text-md mt-2">Level: Intermediate to Advanced</p>
-    </div>
-          <div className="bg-blue-600 h-18 w-full flex items-center justify-between rounded-t-lg px-4 py-4">
-            <h2 className="text-lg md:text-2xl font-semibold text-white">
-              Question {currentQuestionIndex + 1} of {mcqQuestions.length}
-            </h2>
-            <div className="text-lg md:text-xl font-semibold text-white">
-              {Math.floor(seconds / 60)}:{seconds % 60 < 10 ? `0${seconds % 60}` : seconds % 60}
-            </div>
-          </div>
-          <div className="flex flex-col flex-grow space-y-4 w-full relative">
-            <div className="bg-white shadow-md rounded-b-lg p-4 flex-grow">
-              <h3 className="text-lg md:text-xl font-bold mb-4">{mcqQuestions[currentQuestionIndex].question}</h3>
-              <ul className="options-list list-none pl-0">
-                {mcqQuestions[currentQuestionIndex].options.map(option => (
-                  <li key={option.option} className="flex items-center my-5">
-                    <input
-                      type="radio" // Changed to radio for single selection
-                      id={option.option}
-                      name="quiz-option" // Grouping for radio buttons
-                      checked={selectedOption === option.option}
-                      onChange={() => setSelectedOption(option.option)}
-                      className="form-radio h-5 w-5 text-blue-600 border-gray-300 rounded mr-2 cursor-pointer"
-                    />
-                    <label htmlFor={option.option} className="text-base md:text-lg">
-                      {option.answer}
-                    </label>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {/* Next Button Section */}
-            <div className="absolute bottom-4 right-4 w-fit">
-              <button
-                onClick={handleNext}
-                className="bg-blue-500 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        </>
-      ) : (
-        <div className="flex flex-col items-center justify-center h-screen bg-white shadow-lg rounded-lg p-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-blue-600 mb-4">Quiz Finished!</h2>
-          <p className="text-lg md:text-2xl font-semibold text-gray-700 mb-4">Your Score:</p>
-          <p className="text-2xl md:text-4xl font-bold text-blue-600">{score} / {mcqQuestions.length}</p>
-          <p className="text-md md:text-lg text-gray-600 mt-4">Thank you for participating!</p>
-          <button 
-            className="mt-6 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out"
-            onClick={() => {
-              // Add logic to restart quiz or navigate to another screen
-              setCurrentQuestionIndex(0);
-              setScore(0);
-              setQuizFinished(false);
-            }}
+return (
+  <div className="flex flex-col min-w-full justify-between min-h-screen p-4 md:p-8 lg:p-12 bg-gray-50">
+  {!quizFinished ? (
+    <> 
+      <div className="text-center mb-6">
+        <h1 className="text-4xl font-extrabold text-indigo-600">SQL Knowledge Assessment Quiz</h1>
+        <p className="text-lg mt-2 text-gray-700">Test your knowledge with these multiple-choice questions.</p>
+        <p className="text-md mt-2 text-gray-500">Level: Intermediate to Advanced</p>
+      </div>
+      <div className="bg-indigo-500 h-18 w-full flex items-center justify-between rounded-t-lg px-4 py-4">
+        <h2 className="text-lg md:text-2xl font-semibold text-white">
+          Question {currentQuestionIndex + 1} of {mcqQuestions.length}
+        </h2>
+        <div className="text-lg md:text-xl font-semibold text-yellow-400">
+          {Math.floor(seconds / 60)}:{seconds % 60 < 10 ? `0${seconds % 60}` : seconds % 60}
+        </div>
+      </div>
+      <div className="flex flex-col flex-grow space-y-4 w-full relative">
+        <div className="bg-white shadow-md rounded-b-lg p-4 flex-grow">
+          <h3 className="text-lg md:text-xl font-bold mb-4 text-indigo-900">{mcqQuestions[currentQuestionIndex].question}</h3>
+          <ul className="options-list list-none pl-0">
+            {mcqQuestions[currentQuestionIndex].options.map(option => (
+             <li className="flex items-center my-5 border rounded-md p-4">
+             <input
+               type="radio"
+               id={option.option}
+               name="quiz-option"
+               checked={selectedOption === option.option}
+               onChange={() => setSelectedOption(option.option)}
+               className="h-6 w-6 radio border-zinc-700"
+             />
+             <label
+               for={option.option}
+               className="ml-4 text-base md:text-lg font-medium transition-all duration-300 ease-in-out text-gray-800 hover:text-blue-500"
+             >
+               {option.answer}
+             </label>
+           </li>
+            
+            ))}
+          </ul>
+        </div>
+        {/* Next Button Section */}
+        <div className="absolute bottom-4 right-4 w-fit">
+          <button
+            onClick={handleNext}
+            className="bg-indigo-600 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:scale-105"
           >
-            Restart Quiz
+            Next
           </button>
         </div>
-      )}
+      </div>
+    </>
+  ) : (
+    <div className="flex flex-col items-center justify-center h-screen bg-white shadow-lg rounded-lg p-6">
+      <h2 className="text-4xl md:text-5xl font-bold text-indigo-600 mb-4">Quiz Finished!</h2>
+      <p className="text-lg md:text-2xl font-semibold text-gray-700 mb-4">Your Score:</p>
+      <p className="text-2xl md:text-4xl font-bold text-indigo-600">{score} / {mcqQuestions.length}</p>
+      <p className="text-md md:text-lg text-gray-500 mt-4">Thank you for participating!</p>
+      <button 
+        className="mt-6 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-300 ease-in-out"
+        onClick={() => {
+          setCurrentQuestionIndex(0);
+          setScore(0);
+          setQuizFinished(false);
+        }}
+      >
+        Restart Quiz
+      </button>
     </div>
-  );
+  )}
+</div>
+
+)
+ 
 }
 
 export default QuizzScreen;

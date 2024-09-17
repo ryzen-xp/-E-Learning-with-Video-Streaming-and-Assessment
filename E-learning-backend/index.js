@@ -22,10 +22,8 @@ app.get('/',(req,res)=>{
   res.send('hello world')
 });
 
-app.get('/api',(req,res)=>{
-res.send("hi ");
-});
-app.post('/api/user',userRoutes)
+
+app.use('/api/user',userRoutes)
 
 
 // Start server

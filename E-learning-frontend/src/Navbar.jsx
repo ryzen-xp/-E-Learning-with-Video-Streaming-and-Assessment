@@ -35,6 +35,7 @@ export default function Navbar() {
               alt="Logo"
               className="h-8 w-auto"
             />
+            <span className='text-white font-extrabold px-2'>SkillSphere</span>
           </div>
 
           {/* Desktop Navigation */}
