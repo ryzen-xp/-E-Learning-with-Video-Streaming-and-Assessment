@@ -73,7 +73,7 @@ function Signup() {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen bg-gray-100 py-4'>
+    <div className='flex flex-col items-center justify-center min-h-screen  py-4'>
       <div className='w-full max-w-2xl p-6 bg-white rounded-lg shadow-md'> {/* Increased width */}
         <h2 className='text-2xl font-bold text-center text-teal-950 mb-6'>
           Create an Account
