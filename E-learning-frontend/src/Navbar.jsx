@@ -6,6 +6,7 @@ const navigation = [
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/quizz' },
   { name: 'Contact', href: '/contact' },
+  { name: 'Login', href: '/login' },
 ];
 
 const profile = [
