@@ -1,35 +1,32 @@
 import { useState } from 'react';
 
 const navigation = [
-  { name: 'Home', href: '/', current: true },
+  { name: 'Home', href: '/', current: false },
   { name: 'About', href: '#', current: false },
   { name: 'Services', href: '/quizz', current: false },
   { name: 'Contact', href: '#', current: false },
 ];
-const profile = [{
-  name:'Your Profile', href:'#',current: false},
-  {name:'Settings', href:'#',current: false},
-  {name:'Sign out', href:'#',current: false}
-]
 
+const profile = [
+  { name: 'Your Profile', href: '#', current: false },
+  { name: 'Settings', href: '#', current: false },
+  { name: 'Sign out', href: '#', current: false },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+  const toggleMenu = () => setIsOpen(!isOpen);
 
-  const toggleMenu = () => {
-    
-    setIsOpen(!isOpen);
-  };
+  const classNames = (...classes) => classes.filter(Boolean).join(' ');
 
   return (
     <nav className="bg-gray-800">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+          {/* Logo */}
           <div className="flex items-center">
             <img
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
@@ -38,57 +35,46 @@ export default function Navbar() {
             />
           </div>
 
+          {/* Desktop Navigation */}
           <div className="hidden sm:flex sm:items-center sm:justify-between w-full">
             <div className="flex space-x-4 ml-auto">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium ${
+                  className={classNames(
+                    'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium',
                     item.current ? 'bg-gray-900 text-white' : ''
-                  }`}
+                  )}
                 >
                   {item.name}
                 </a>
               ))}
-
               {/* Profile Dropdown */}
               <div className="relative">
                 <button
                   onClick={toggleDropdown}
                   className="flex items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
-                  {/* Profile Image with responsive hiding */}
                   <img
                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt="User Avatar"
-                    className="hidden md:block h-10 w-10 rounded-full" // Hides on small screens
+                    className="hidden md:block h-10 w-10 rounded-full"
                   />
                 </button>
                 {dropdownOpen && (
                   <div className="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                     <div className="py-1">
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={toggleDropdown}
-                      >
-                        Your Profile
-                      </a>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={toggleDropdown}
-                      >
-                        Settings
-                      </a>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={toggleDropdown}
-                      >
-                        Sign out
-                      </a>
+                      {profile.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          onClick={toggleDropdown}
+                        >
+                          {item.name}
+                        </a>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -96,6 +82,7 @@ export default function Navbar() {
             </div>
           </div>
 
+          {/* Mobile Menu Button */}
           <div className="sm:hidden">
             <button
               onClick={toggleMenu}
@@ -136,22 +123,22 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       {isOpen && (
         <div className="sm:hidden">
           <div className="space-y-1 px-2 pb-3 pt-2">
-            {[...navigation,...profile].map((item) => (
+            {[...navigation, ...profile].map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className={`block rounded-md px-3 py-2 text-base font-medium ${
+                className={classNames(
+                  'block rounded-md px-3 py-2 text-base font-medium',
                   item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'
-                }`}
+                )}
               >
                 {item.name}
               </a>
             ))}
-           
           </div>
         </div>
       )}
