@@ -8,11 +8,11 @@ function Banner() {
       <div className=" max-w-screen-2xl  container mx-auto px-20 md:px-20 sm:px-4 flex flex-col md:flex-row  min-h-screen">
         <div className="w-full order-2 px-10 md:order-1 md:w-1/2 mt-12 md:mt-36 max-h-screen">
           <div className="space-y-8 ">
-            <h1 className="text-2xl md:text-3xl font-bold text-white">
+            <h1 className="text-xl md:text-3xl font-bold text-white">
               Hello, welcomes here to learn something{" "}
               <span className="text-pink-500">new everyday!!!</span>
             </h1>
-            <p className="text-xl sm:text-xl  text-gray-300 md:text-2xl">
+            <p className="text-lg sm:text-xl  text-gray-300 md:text-2xl">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor,
               et totam. Tempora amet atque expedita, quae corrupti totam sed
               pariatur corporis at veniam est voluptas animi!
@@ -42,7 +42,7 @@ function Banner() {
         <div className=" order-1 w-full mt-20 md:w-1/2 max-h-screen" >
           <img
             src={banner}
-            className=" px-10   md:ml-12"
+            className=" px-10  md:h-[300] md:w-[250]  md:ml-12"
             alt=""
           />
         </div>
