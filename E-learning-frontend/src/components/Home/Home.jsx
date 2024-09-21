@@ -3,15 +3,15 @@ import React from 'react';
 import Banner from './Banner';
 import Footer from './Footer';
 
-const Signup = () => {
+const Home = () => {
   return (
-    <div className="flex flex-col  bg-base-100 items-center justify-center min-h-screen  p-4">
-      <Banner className="w-full mb-10" /> {/* Full width and margin below the banner */}
-      <div className="w-full mt-10">
-        <Footer className="mt-10 bg-gray-800 text-white py-4 text-center" /> {/* Dark background, white text, padding */}
+    <div className="flex flex-col bg-gray-900 w-screen items-center justify-center min-h-screen -mt-4">
+      <Banner /> {/* Full width and margin below the banner */}
+      <div className="w-screen mt-10">
+        <Footer  /> {/* Dark background, white text, padding */}
       </div>
     </div>
   );
 };
 
-export default Signup;
+export default Home;
