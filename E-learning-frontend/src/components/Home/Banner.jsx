@@ -5,7 +5,7 @@ const banner = "/E.jpg";
 function Banner() {
   return (
     <>
-      <div className=" max-w-screen-2xl bg-base-100  container mx-auto px-20 md:px-20 sm:px-4 flex flex-col md:flex-row md:my-10 min-h-screen">
+      <div className=" max-w-screen-2xl  container mx-auto px-20 md:px-20 sm:px-4 flex flex-col md:flex-row  min-h-screen">
         <div className="w-full order-2 px-10 md:order-1 md:w-1/2 mt-12 md:mt-36">
           <div className="space-y-8 ">
             <h1 className="text-2xl md:text-5xl font-bold text-white">
