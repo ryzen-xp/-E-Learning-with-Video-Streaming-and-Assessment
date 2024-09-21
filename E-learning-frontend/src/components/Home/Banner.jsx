@@ -42,7 +42,7 @@ function Banner() {
         <div className=" order-1 w-full mt-20 md:w-1/2 max-h-screen" >
           <img
             src={banner}
-            className=" px-10  md:w-[350] md:h-[400px] md:ml-12"
+            className=" px-10   md:ml-12"
             alt=""
           />
         </div>
