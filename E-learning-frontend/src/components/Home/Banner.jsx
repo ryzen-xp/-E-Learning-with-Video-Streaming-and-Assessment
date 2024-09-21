@@ -6,7 +6,7 @@ function Banner() {
   return (
     <>
       <div className=" max-w-screen-2xl  container mx-auto px-20 md:px-20 sm:px-4 flex flex-col md:flex-row  min-h-screen">
-        <div className="w-full order-2 px-10 md:order-1 md:w-1/2 mt-12 md:mt-36">
+        <div className="w-full order-2 px-10 md:order-1 md:w-1/2 mt-12 md:mt-36 max-h-screen">
           <div className="space-y-8 ">
             <h1 className="text-2xl md:text-5xl font-bold text-white">
               Hello, welcomes here to learn something{" "}
@@ -39,10 +39,10 @@ function Banner() {
           </div>
           <button  className="border  text-xl bg-pink-400 hover:bg-pink-500 text-black font-bold py-4 px-6 rounded transition duration-300 mt-6 ">Get Started</button>
         </div>
-        <div className=" order-1 w-full mt-20 md:w-1/2">
+        <div className=" order-1 w-full mt-20 md:w-1/2 max-h-screen" >
           <img
             src={banner}
-            className=" px-10  md:w-[500] md:h-[500px] md:ml-12"
+            className=" px-10  md:w-[350] md:h-[400px] md:ml-12"
             alt=""
           />
         </div>
