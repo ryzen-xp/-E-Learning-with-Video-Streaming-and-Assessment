@@ -39,7 +39,7 @@ function Banner() {
           </div>
           <button  className="border  text-xl bg-pink-400 hover:bg-pink-500 text-black font-bold py-4 px-6 rounded transition duration-300 mt-6 ">Get Started</button>
         </div>
-        <div className=" order-1 w-full mt-20 md:w-1/2 max-h-screen" >
+        <div className=" order-1 w-full mt-20 md:w-1/2 h-1/2" >
           <img
             src={banner}
             className=" px-10  md:h-[300] md:w-[250]  md:ml-12"
