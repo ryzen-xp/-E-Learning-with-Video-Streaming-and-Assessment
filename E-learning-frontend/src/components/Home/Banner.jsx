@@ -5,14 +5,14 @@ const banner = "/E.jpg";
 function Banner() {
   return (
     <>
-      <div className=" max-w-screen-2xl bg-base-100  container mx-auto px-20 md:px-20 sm:px-4 flex flex-col md:flex-row md:my-10">
-        <div className="w-full order-2 md:order-1 md:w-1/2 mt-12 md:mt-36">
-          <div className="space-y-8">
-            <h1 className="text-2xl md:text-4xl font-bold text-white">
+      <div className=" max-w-screen-2xl bg-base-100  container mx-auto px-20 md:px-20 sm:px-4 flex flex-col md:flex-row md:my-10 min-h-screen">
+        <div className="w-full order-2 px-10 md:order-1 md:w-1/2 mt-12 md:mt-36">
+          <div className="space-y-8 ">
+            <h1 className="text-2xl md:text-5xl font-bold text-white">
               Hello, welcomes here to learn something{" "}
               <span className="text-pink-500">new everyday!!!</span>
             </h1>
-            <p className="text-sm text-gray-300 md:text-2xl">
+            <p className="text-xl sm:text-2xl  text-gray-300 md:text-3xl">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor,
               et totam. Tempora amet atque expedita, quae corrupti totam sed
               pariatur corporis at veniam est voluptas animi!
@@ -37,12 +37,12 @@ function Banner() {
 </label>
 
           </div>
-          <button  className="border  text-xl bg-pink-400 hover:bg-pink-500 text-black font-bold py-2 px-4 rounded transition duration-300 mt-6 ">Get Started</button>
+          <button  className="border  text-xl bg-pink-400 hover:bg-pink-500 text-black font-bold py-4 px-6 rounded transition duration-300 mt-6 ">Get Started</button>
         </div>
         <div className=" order-1 w-full mt-20 md:w-1/2">
           <img
             src={banner}
-            className="md:w-[550px] md:h-[460px] md:ml-12"
+            className=" px-10  md:w-[800] md:h-[660px] md:ml-12"
             alt=""
           />
         </div>
