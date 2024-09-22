@@ -3,12 +3,16 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './db.js';
 import userRoutes from './src/routers/User.js';
+import quizzRoutes from './src/routers/Quizzes.js'
+import { insertQuizzes } from './src/modals/Ques.js';
+
 
 
 
 
 dotenv.config();
 connectDB();
+// insertQuizzes();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -24,6 +28,7 @@ app.get('/',(req,res)=>{
 
 
 app.use('/api/user',userRoutes)
+app.use('/api',quizzRoutes)
 
 
 // Start server

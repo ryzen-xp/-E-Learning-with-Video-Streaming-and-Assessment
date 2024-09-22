@@ -1,10 +1,12 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 import User from './User.js';
 // Quiz Schema (supports multiple quizzes)
 const quizSchema = new mongoose.Schema({
   title: String,        // Title of the quiz
   description: String,  // Description of the quiz
-  category: String,     // Quiz category (optional, e.g., "Science", "Math")
+  category: String,   
+  banner_url: String,
+                     // Quiz category (optional, e.g., "Science", "Math")
   questions: [
     {
       question: String,        // Quiz question
@@ -30,7 +32,7 @@ const userQuizResultSchema = new mongoose.Schema({
   dateTaken: { type: Date, default: Date.now },                         // Date the quiz was taken
 });
  
-const Quiz = mongoose.model('Quiz', quizSchema);
+const Quizz = mongoose.model('Quiz', quizSchema);
 const UserQuizResult = mongoose.model('UserQuizResult', userQuizResultSchema);
 
-module.exports = { User, Quiz, UserQuizResult };
+export {  Quizz, UserQuizResult };
