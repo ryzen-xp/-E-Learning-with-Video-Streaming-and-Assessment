@@ -4,6 +4,7 @@ import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import Home from './components/Home/Home';
 import QuizzScreen from './components/Quizz/QuizzScreen';
+import QuizzPlay from './components/Quizz/QuizzPlay';
 
 function ComponentsRouter() {
   return (
@@ -13,6 +14,7 @@ function ComponentsRouter() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path='/quizz' element={<QuizzScreen/>}/>
+        <Route path='/quizzPlay' element={<QuizzPlay/>}/>
       </Routes>
   
   );
