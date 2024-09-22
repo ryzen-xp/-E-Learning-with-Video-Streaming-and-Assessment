@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function Banner() {
+const navigate = useNavigate();
   return (
-    <div className="flex flex-col-reverse md:flex-row items-center justify-between max-w-screen-2xl container mx-auto px-4 md:px-20 lg:px-24 py-16 md:h-screen">
+    <div className="flex flex-col-reverse md:flex-row items-center justify-between max-w-screen-2xl container mx-auto px-8 md:px-20 lg:px-24 py-16 md:h-screen">
       {/* Left Text Section */}
       <div className="w-full md:w-1/2 space-y-6 md:space-y-10 text-white md:pr-10">
         <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
@@ -29,7 +32,7 @@ function Banner() {
             placeholder="Enter your email"
           />
         </label>
-        <button className="border text-xl border-transparent bg-pink-400 hover:bg-pink-500 text-black font-bold py-3 px-5 rounded transition duration-300">
+        <button className="border text-xl border-transparent bg-pink-400 hover:bg-pink-500 text-black font-bold py-3 px-5 rounded transition duration-300" onClick={()=>navigate('/login')}>
           Get Started
         </button>
       </div>
@@ -38,7 +41,7 @@ function Banner() {
       <div className="w-full md:w-1/2 flex justify-center items-start mt-6 md:mt-0 sm:pb-16 md:ml-12">
         <img
           src='/Banner.svg' // Ensure the path is correct
-          className="h-auto max-h-full w-full md:min-h-[450px] object-contain rounded-lg shadow-lg"
+          className="h-auto max-h-full w-full md:min-h-[500px] object-contain rounded-lg shadow-lg"
           alt="Learning Banner"
         />
       </div>
