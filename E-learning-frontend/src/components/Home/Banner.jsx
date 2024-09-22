@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-
 function Banner() {
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col-reverse md:flex-row items-center justify-between max-w-screen-2xl container mx-auto px-8 md:px-20 lg:px-24 py-16 md:h-screen">
       {/* Left Text Section */}
@@ -16,6 +16,7 @@ const navigate = useNavigate();
           Explore a variety of topics and expand your knowledge with engaging
           content and resources.
         </p>
+        {/* Email Input */}
         <label className="flex items-center gap-2 border-2 border-gray-500 rounded-md p-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +33,11 @@ const navigate = useNavigate();
             placeholder="Enter your email"
           />
         </label>
-        <button className="border text-xl border-transparent bg-pink-400 hover:bg-pink-500 text-black font-bold py-3 px-5 rounded transition duration-300" onClick={()=>navigate('/login')}>
+        {/* Get Started Button */}
+        <button
+          className="border text-xl border-transparent bg-pink-400 hover:bg-pink-500 text-black font-bold py-3 px-5 rounded transition duration-300"
+          onClick={() => navigate('/login')}
+        >
           Get Started
         </button>
       </div>
