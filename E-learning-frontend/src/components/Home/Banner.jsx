@@ -8,7 +8,7 @@ function Banner() {
     <div className="flex flex-col-reverse md:flex-row items-center justify-between max-w-screen-2xl container mx-auto px-8 md:px-20 lg:px-24 py-16 md:h-screen">
       {/* Left Text Section */}
       <div className="w-full md:w-1/2 space-y-6 md:space-y-10 text-white md:pr-10">
-        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
           Welcome! Learn something{" "}
           <span className="text-pink-400">new every day!</span>
         </h1>
