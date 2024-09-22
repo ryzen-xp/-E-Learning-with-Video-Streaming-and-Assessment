@@ -1,12 +1,12 @@
 import axios from "axios";
-import Base_Url from "../../Base_Url";
+const Base_Url = "http://localhost:5000/api";
 
 // Login API call
 const login = async (postData) => {
   try {    
     console.log(postData);
     // Sending POST request with user data (postData) to login endpoint
-   const response =  await axios.post(`${Base_Url}/api/user/login`, postData);
+   const response =  await axios.post(`${Base_Url}/user/login`, postData);
   console.log(response.data.token)
   localStorage.setItem('token',response?.data?.token);
    return response.data.message;

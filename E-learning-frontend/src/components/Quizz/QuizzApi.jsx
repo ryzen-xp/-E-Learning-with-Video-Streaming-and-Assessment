@@ -1,9 +1,8 @@
 import axios from 'axios';
-import Base_Url from '../../Base_Url';
 export  const getQuizzes = async()=>{
     try {
       
-       const response =  await axios.get(`${Base_Url}/api/quizzes`)
+       const response =  await axios.get(`http://localhost:5000/api/quizzes`)
      
        return response.data;
     } catch (error) {
