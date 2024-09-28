@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Services', href: '/quizz' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'Login', href: '/login' },
+  { name: 'Home', href: '/' },                     // Link to Home
+  { name: 'Courses', href: '/courses' },           // Link to Courses
+  { name: 'Quizzes', href: '/quizzes' },           // Link to Quizzes
+  { name: 'Profile', href: '/profile' },            // Link to User Profile
+  { name: 'Logout', href: '/uploadQuizzes' },              // Link to Logout
 ];
+
 
 const profile = [
   { name: 'Your Profile', href: '/profile' },

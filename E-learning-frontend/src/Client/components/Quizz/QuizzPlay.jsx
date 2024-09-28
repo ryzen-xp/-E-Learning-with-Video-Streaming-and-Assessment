@@ -60,7 +60,7 @@ function QuizzScreen() {
   }
 
   return (
-    <div className="flex flex-col min-w-full justify-between min-h-screen p-4 md:p-8 lg:p-12 bg-gray-50">
+    <div className="flex flex-col min-w-full justify-between min-h-screen p-4 md:p-8 lg:p-12 ">
       {!quizFinished ? (
         <>
           <div className="text-center mb-6">
