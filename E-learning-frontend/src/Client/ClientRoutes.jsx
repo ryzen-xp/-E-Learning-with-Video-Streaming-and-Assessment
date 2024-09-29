@@ -16,7 +16,6 @@ function ComponentsRouter() {
         <Route path="/signup" element={<Signup />} />
         <Route path='/quizzes' element={<QuizzScreen/>}/>
         <Route path='/quizzPlay' element={<QuizzPlay/>}/>
-     
       </Routes>
   
   );

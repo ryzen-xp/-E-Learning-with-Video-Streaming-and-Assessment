@@ -1,63 +1,123 @@
 import React, { useEffect, useState } from "react";
 import { getQuizzes } from "./QuizzApi"; // Adjust the path as necessary
 import { useNavigate } from "react-router-dom";
+import {
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+  CircularProgress,
+  Box,
+} from "@mui/material";
 
 const QuizzScreen = () => {
-  const [quizzes, setQuizzes] = useState([]); // State to hold quizzes
-  const [loading, setLoading] = useState(true); // State to manage loading status
-  const [error, setError] = useState(null); // State to manage errors
+  const [quizzes, setQuizzes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
-        const resp = await getQuizzes(); // Await the API call
-        console.log("Fetched quizzes:", resp);
-        setQuizzes(resp); // Set quizzes data to state
+        const resp = await getQuizzes();
+        setQuizzes(resp);
       } catch (error) {
-        console.log(error);
-        setError('Failed to fetch quizzes.'); // Set error message
+        setError("Failed to fetch quizzes.");
       } finally {
-        setLoading(false); // Set loading to false regardless of success or error
+        setLoading(false);
       }
     };
 
-    fetchQuizzes(); // Call the function to fetch quizzes
+    fetchQuizzes();
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // Show loading state
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
   }
 
   if (error) {
-    return <div>{error}</div>; // Show error message
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <Typography variant="h6" color="error">
+          {error}
+        </Typography>
+      </Box>
+    );
   }
 
   const handleClick = (quiz) => {
-    localStorage.setItem('quizzToPlay', JSON.stringify(quiz)); // Store the selected quiz in local storage
-    navigate('/quizzPlay'); // Navigate to the quiz play screen
+    localStorage.setItem("quizzToPlay", JSON.stringify(quiz));
+    navigate("/quizzPlay");
   };
 
   return (
-    <div className="container px-4">
-      <h1 className="text-3xl font-bold mb-6">All Quizzes</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <Box sx={{ padding: 4 }}>
+      <Typography variant="h3" component="h1" align="center" gutterBottom>
+        All Quizzes
+      </Typography>
+      <Grid container spacing={4}>
         {quizzes.map((quiz, index) => (
-          <div key={index} className="border rounded-lg shadow-md p-4">
-            <img src={quiz.banner_url} alt={quiz.title} className="w-full h-32 object-cover rounded-md mb-4" />
-            <h2 className="text-xl font-semibold">{quiz.title}</h2>
-            <p className="text-gray-600">{quiz.description}</p>
-            <p className="text-sm text-gray-500">Category: {quiz.category}</p>
-            <button 
-              className="mt-2 text-pink-500"
-              onClick={() => handleClick(quiz)} // Pass quiz as an argument
+          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+            <Card
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+                justifyContent: "space-between",
+              }}
             >
-              Start Quiz
-            </button>
-          </div>
+              <CardMedia
+                component="img"
+                height="140"
+                image={quiz.banner_url}
+                alt={quiz.title}
+              />
+              <CardContent>
+                <Typography variant="h5" component="div" gutterBottom>
+                  {quiz.title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {quiz.description}
+                </Typography>
+                <Typography variant="caption" color="textSecondary">
+                  Category: {quiz.category}
+                </Typography>
+              </CardContent>
+              <Box sx={{ p: 2 }}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  onClick={() => handleClick(quiz)}
+                >
+                  Start Quiz
+                </Button>
+              </Box>
+            </Card>
+          </Grid>
         ))}
-      </div>
-    </div>
+      </Grid>
+    </Box>
   );
 };
 
