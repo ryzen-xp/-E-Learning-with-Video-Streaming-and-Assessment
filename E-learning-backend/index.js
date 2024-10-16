@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import connectDB from './db.js';
 import userRoutes from './src/routers/User.js';
 import quizzRoutes from './src/routers/Quizzes.js'
-import { insertQuizzes } from './src/modals/Ques.js';
+// import { insertQuizzes } from './src/modals/Ques.js';
 
 
 
