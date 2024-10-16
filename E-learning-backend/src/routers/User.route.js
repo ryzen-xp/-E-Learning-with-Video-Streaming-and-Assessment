@@ -9,7 +9,7 @@ const router = express.Router();
 
 // Register route
 router.post('/register',  upload.fields(
-  { name: "profileimage", maxCount: 1 }
+  [{ name: "profileimage", maxCount: 1 }]
  
 ) ,registerUser);
 
